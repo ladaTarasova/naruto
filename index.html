@@ -1,0 +1,915 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как стать Хокаге?</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0b111b;
+    color: #eeeeee;
+    font-family: Verdana, sans-serif;
+}
+
+/* Шапка сайта */
+header {
+    background: #080d15;
+    border-bottom: 1px solid #27364a;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    color: #f27622;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: #b7bec8;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+}
+
+nav button:hover,
+nav button.active {
+    color: #f27622;
+}
+
+/* Страницы */
+.page {
+    display: none;
+    max-width: 1050px;
+    margin: auto;
+    padding: 40px 5% 60px;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Главный блок */
+.hero {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background: #101a29;
+    max-width: none;
+    padding: 55px 10%;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.small {
+    color: #f27622;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 10px 0 18px;
+}
+
+h1 span {
+    color: #f27622;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+p {
+    color: #bcc4ce;
+    line-height: 1.5;
+}
+
+/* Кнопки */
+.button {
+    display: inline-block;
+    background: #e96818;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin-top: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+}
+
+.button:hover {
+    background: #c9520d;
+}
+
+/* Символ */
+.hero-symbol {
+    font-size: 120px;
+    color: #20334d;
+}
+
+/* Карточки */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.cards.four {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+    background: #111c2b;
+    border: 1px solid #2a3b52;
+    border-radius: 4px;
+    padding: 18px;
+}
+
+.card h3,
+.card h2 {
+    margin-top: 8px;
+}
+
+.card:hover {
+    border-color: #f27622;
+}
+
+.icon {
+    font-size: 26px;
+    color: #f27622;
+}
+
+/* Факт */
+.fact {
+    margin-top: 30px;
+    border: 1px solid #f27622;
+    padding: 18px;
+    background: #101a29;
+    border-radius: 3px;
+}
+
+/* Путь */
+.path {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.stage {
+    min-width: 170px;
+    padding: 18px;
+    background: #111c2b;
+    border: 1px solid #2a3b52;
+    border-radius: 4px;
+}
+
+.stage:last-child {
+    border-color: #f27622;
+}
+
+.arrow {
+    color: #f27622;
+    font-size: 22px;
+}
+
+/* Качества */
+.qualities div {
+    padding: 18px 0;
+    border-bottom: 1px solid #2a3b52;
+}
+
+/* Персонажи */
+.character .portrait {
+    height: 110px;
+    background: #18263a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #f27622;
+}
+
+/* Тест */
+.question {
+    background: #111c2b;
+    border: 1px solid #2a3b52;
+    border-radius: 4px;
+    padding: 18px;
+    margin-bottom: 14px;
+}
+
+.question label {
+    display: block;
+    margin: 10px 0;
+    color: #c4cad2;
+}
+
+.question label:hover {
+    color: #f27622;
+}
+
+.result {
+    display: none;
+    background: #142033;
+    border-left: 3px solid #f27622;
+    padding: 18px;
+    margin-top: 18px;
+}
+
+.result.show {
+    display: block;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    color: #737f8f;
+    padding: 20px;
+    border-top: 1px solid #27364a;
+    font-size: 13px;
+}
+
+/* Телефон */
+@media (max-width: 850px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cards,
+    .cards.four {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding: 45px 7%;
+    }
+}
+
+@media (max-width: 560px) {
+    .cards,
+    .cards.four {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-symbol {
+        display: none;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .path {
+        display: block;
+    }
+
+    .stage {
+        margin-bottom: 10px;
+    }
+
+    .arrow {
+        text-align: center;
+        transform: rotate(90deg);
+        height: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">忍 HOKAGE</div>
+
+    <nav>
+        <button onclick="showPage('home')" class="active">Главная</button>
+        <button onclick="showPage('path')">Путь шиноби</button>
+        <button onclick="showPage('training')">Тренировки</button>
+        <button onclick="showPage('qualities')">Качества</button>
+        <button onclick="showPage('hokage')">Хокаге</button>
+        <button onclick="showPage('test')">Мини-тест</button>
+    </nav>
+</header>
+
+
+<!-- ГЛАВНАЯ -->
+<section id="home" class="page hero active">
+    <div class="hero-text">
+        <p class="small">Учебный сайт по мотивам Naruto</p>
+
+        <h1>Как стать <span>Хокаге?</span></h1>
+
+        <p>
+            Хокаге — лидер Деревни Скрытого Листа.
+            Он отвечает за безопасность деревни и её жителей.
+            Чтобы стать Хокаге, одной силы недостаточно.
+        </p>
+
+        <button class="button" onclick="showPage('path')">
+            Начать обучение →
+        </button>
+    </div>
+
+    <div class="hero-symbol">火</div>
+</section>
+
+
+<section id="home-info" class="page active">
+    <h2>Что нужно для того, чтобы стать Хокаге?</h2>
+
+    <div class="cards four">
+
+        <div class="card">
+            <div class="icon"></div>
+            <h3>Сила</h3>
+            <p>
+                Физическая выносливость, хорошая реакция и умение сражаться.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon"></div>
+            <h3>Ум</h3>
+            <p>
+                Анализ ситуации и способность принимать правильные решения.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon"></div>
+            <h3>Командная работа</h3>
+            <p>
+                Хокаге не может делать всё один. Нужно доверять своей команде.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon"></div>
+            <h3>Воля Огня</h3>
+            <p>
+                Забота о людях деревни и готовность защищать их.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="fact">
+        <b>Интересный факт</b>
+
+        <p>
+            Первый Хокаге, Хаширама Сенджу, создал Коноху вместе с Мадарой Учихой.
+            Идея деревни была связана с объединением кланов.
+        </p>
+    </div>
+</section>
+
+
+<!-- ПУТЬ -->
+<section id="path" class="page">
+
+    <h1>Путь шиноби</h1>
+
+    <p>
+        До должности Хокаге нужно пройти длинный путь.
+        Не всё происходит быстро, но постепенно шиноби получает больше опыта.
+    </p>
+
+    <div class="path">
+
+        <div class="stage">
+            <b>01</b>
+            <h2>Академия</h2>
+            <p>
+                Изучение основ чакры, техник и правил шиноби.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="stage">
+            <b>02</b>
+            <h2>Генин</h2>
+            <p>
+                Первые задания и работа в команде.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="stage">
+            <b>03</b>
+            <h2>Чунин</h2>
+            <p>
+                Больше ответственности и сложнее задания.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="stage">
+            <b>04</b>
+            <h2>Джонин</h2>
+            <p>
+                Опытный шиноби, которому доверяют важные миссии.
+            </p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="stage">
+            <b>05</b>
+            <h2>Хокаге</h2>
+            <p>
+                Лидер Конохи и главный защитник деревни.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ТРЕНИРОВКИ -->
+<section id="training" class="page">
+
+    <h1>Тренировки</h1>
+
+    <p>
+        Без тренировок не будет прогресса.
+        Будущему Хокаге нужно развивать тело, чакру и навыки.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">01</div>
+            <h2>Физическая подготовка</h2>
+            <p>
+                Бег, сила, выносливость и реакция.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">02</div>
+            <h2>Контроль чакры</h2>
+            <p>
+                Концентрация и правильное распределение чакры.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">03</div>
+            <h2>Метание кунаев</h2>
+            <p>
+                Точность, скорость и координация.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">04</div>
+            <h2>Изучение техник</h2>
+            <p>
+                Тайдзюцу, гендзюцу и ниндзюцу.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">05</div>
+            <h2>Тактика и командная работа</h2>
+            <p>
+                Планирование, взаимодействие и доверие.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- КАЧЕСТВА -->
+<section id="qualities" class="page">
+
+    <h1>Главные качества</h1>
+
+    <p>
+        Хокаге — это не только сила. Вот что действительно важно.
+    </p>
+
+    <div class="qualities">
+
+        <div>
+            <h2>01. Ответственность</h2>
+            <p>
+                Решения Хокаге влияют на всю деревню,
+                поэтому нельзя относиться к ним несерьёзно.
+            </p>
+        </div>
+
+        <div>
+            <h2>02. Лидерство</h2>
+            <p>
+                Нужно уметь вести людей за собой
+                и принимать сложные решения.
+            </p>
+        </div>
+
+        <div>
+            <h2>03. Сострадание</h2>
+            <p>
+                Хокаге должен помнить,
+                ради кого он защищает деревню.
+            </p>
+        </div>
+
+        <div>
+            <h2>04. Упорство</h2>
+            <p>
+                Путь шиноби длинный.
+                Без терпения и труда ничего не получится.
+            </p>
+        </div>
+
+        <div>
+            <h2>05. Воля Огня</h2>
+            <p>
+                Забота о людях и готовность защищать Коноху —
+                одна из главных идей деревни.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ХОКАГЕ -->
+<section id="hokage" class="page">
+
+    <h1>Известные Хокаге</h1>
+
+    <p>
+        Каждый Хокаге оставил свой след в истории Конохи.
+        У всех были разные характеры и способности.
+    </p>
+
+    <div class="cards">
+
+        <div class="card character">
+            <div class="portrait">千</div>
+            <h2>Хаширама Сенджу</h2>
+            <p>
+                Первый Хокаге. Известен огромной силой и техникой Деревья.
+            </p>
+        </div>
+
+        <div class="card character">
+            <div class="portrait">扉</div>
+            <h2>Тобирама Сенджу</h2>
+            <p>
+                Второй Хокаге. Сильный стратег и создатель многих техник.
+            </p>
+        </div>
+
+        <div class="card character">
+            <div class="portrait">猿</div>
+            <h2>Хирузен Сарутоби</h2>
+            <p>
+                Третий Хокаге. Очень опытный шиноби,
+                знавший множество техник.
+            </p>
+        </div>
+
+        <div class="card character">
+            <div class="portrait">波</div>
+            <h2>Минато Намикадзе</h2>
+            <p>
+                Четвёртый Хокаге. Известен своей невероятной скоростью.
+            </p>
+        </div>
+
+        <div class="card character">
+            <div class="portrait">綱</div>
+            <h2>Цунаде</h2>
+            <p>
+                Пятая Хокаге. Сильный медик и один из легендарных саннинов.
+            </p>
+        </div>
+
+        <div class="card character">
+            <div class="portrait">渦</div>
+            <h2>Наруто Узумаки</h2>
+            <p>
+                Седьмой Хокаге. Прошёл путь от ученика академии
+                до лидера деревни.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ТЕСТ -->
+<section id="test" class="page">
+
+    <h1>Мини-тест: смог бы ты стать Хокаге?</h1>
+
+    <p>
+        Ответь на 5 вопросов и узнай свой условный результат.
+    </p>
+
+    <form id="quiz">
+
+        <div class="question">
+
+            <h2>1. В команде начался спор. Что сделаешь?</h2>
+
+            <label>
+                <input type="radio" name="q1" value="2">
+                Выслушаю всех и попробую найти решение
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="1">
+                Поддержу своего друга
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="0">
+                Не буду вмешиваться
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h2>2. Тренировка не получается. Твоя реакция?</h2>
+
+            <label>
+                <input type="radio" name="q2" value="2">
+                Попробую ещё раз
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="1">
+                Сделаю перерыв
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="0">
+                Брошу тренировку
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h2>3. Перед важным заданием ты...</h2>
+
+            <label>
+                <input type="radio" name="q3" value="2">
+                Составлю план
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="1">
+                Посмотрю по ситуации
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="0">
+                Сразу пойду в бой
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h2>4. Товарищ ошибся. Что сделаешь?</h2>
+
+            <label>
+                <input type="radio" name="q4" value="2">
+                Помогу разобраться
+            </label>
+
+            <label>
+                <input type="radio" name="q4" value="1">
+                Укажу на ошибку
+            </label>
+
+            <label>
+                <input type="radio" name="q4" value="0">
+                Обвиню его
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h2>5. Что важнее для Хокаге?</h2>
+
+            <label>
+                <input type="radio" name="q5" value="2">
+                Защищать людей и принимать ответственность
+            </label>
+
+            <label>
+                <input type="radio" name="q5" value="1">
+                Быть самым сильным
+            </label>
+
+            <label>
+                <input type="radio" name="q5" value="0">
+                Быть известным
+            </label>
+
+        </div>
+
+
+        <button class="button" type="submit">
+            Узнать результат
+        </button>
+
+    </form>
+
+    <div id="result" class="result"></div>
+
+</section>
+
+
+<footer>
+    Учебный проект • Как стать Хокаге • Naruto
+</footer>
+
+
+<script>
+
+function showPage(pageId) {
+
+    // Скрываем все страницы
+    const pages = document.querySelectorAll('.page');
+
+    pages.forEach(function(page) {
+        page.classList.remove('active');
+    });
+
+
+    // Для главной страницы показываем два блока
+    if (pageId === 'home') {
+
+        document.getElementById('home').classList.add('active');
+
+        document.getElementById('home-info').classList.add('active');
+
+    } else {
+
+        document.getElementById(pageId).classList.add('active');
+
+    }
+
+
+    // Меняем активную кнопку меню
+    const buttons = document.querySelectorAll('nav button');
+
+    buttons.forEach(function(button) {
+        button.classList.remove('active');
+    });
+
+
+    buttons.forEach(function(button) {
+
+        if (
+            button.getAttribute('onclick')
+            .includes("'" + pageId + "'")
+        ) {
+
+            button.classList.add('active');
+
+        }
+
+    });
+
+
+    window.scrollTo(0, 0);
+}
+
+
+// Мини-тест
+
+document.getElementById('quiz').addEventListener(
+    'submit',
+    function(event) {
+
+        event.preventDefault();
+
+        let score = 0;
+
+
+        for (let i = 1; i <= 5; i++) {
+
+            const answer = document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+            if (!answer) {
+
+                document.getElementById('result').className =
+                    'result show';
+
+                document.getElementById('result').innerHTML =
+                    '<h2>Ответь на все вопросы</h2>' +
+                    '<p>Кажется, один вопрос остался без ответа.</p>';
+
+                return;
+            }
+
+
+            score += Number(answer.value);
+
+        }
+
+
+        let title;
+        let text;
+
+
+        if (score <= 3) {
+
+            title = 'Начинающий шиноби';
+
+            text =
+                'Пока стоит потренироваться. Всё ещё впереди!';
+
+        } else if (score <= 7) {
+
+            title = 'Перспективный шиноби';
+
+            text =
+                'У тебя уже есть хорошие задатки. Продолжай тренироваться.';
+
+        } else {
+
+            title = 'Почти Хокаге';
+
+            text =
+                'Похоже, ты умеешь работать в команде и принимать решения.';
+
+        }
+
+
+        document.getElementById('result').className =
+            'result show';
+
+
+        document.getElementById('result').innerHTML =
+            '<h2>' + title + '</h2>' +
+            '<p>' + text + '</p>' +
+            '<p>Твой результат: ' + score + ' из 10.</p>';
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+
